@@ -107,7 +107,43 @@
             <p>Join our community to share your moments, chat with friends, and explore new connections.</p>
         </div>
         <div class="buttons">
-            <a href="/signup.html">Sign Up</a>
+            <a href="/signup.html" id="signup-btn">Sign Up</a>
+            <a href="/login.html" id="login-btn">Log In</a>
+            <script>
+                // Store user data
+                const users = {};
+
+                document.getElementById('signup-btn').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const username = prompt("Enter a username:");
+                    const password = prompt("Enter a password:");
+                    if (username && password) {
+                        if (users[username]) {
+                            alert("Username already exists. Please choose a different one.");
+                        } else {
+                            users[username] = password;
+                            alert("Sign Up Successful!");
+                            // Redirect to home page
+                            window.location.href = "/home.html";
+                        }
+                    } else {
+                        alert("Please fill in all fields.");
+                    }
+                });
+
+                document.getElementById('login-btn').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const username = prompt("Enter your username:");
+                    const password = prompt("Enter your password:");
+                    if (users[username] && users[username] === password) {
+                        alert("Login Successful!");
+                        // Redirect to home page
+                        window.location.href = "/home.html";
+                    } else {
+                        alert("Invalid username or password.");
+                    }
+                });
+            </script>
             <a href="/login.html">Log In</a>
         </div>
     </div>
