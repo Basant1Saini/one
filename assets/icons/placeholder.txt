@@ -1,0 +1,3 @@
+This directory contains icon files for the SocialNet application.
+Add your icon files here.
+

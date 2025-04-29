@@ -5,11 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SocialNet - Connect with Friends</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        header {
-            background-color: #0078d7;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Connect with Friends and the World Around You</h1>
+            <p>Join our community to share your moments, chat with friends, and explore new connections.</p>
+        </div>
+        
+        <div class="auth-container">
+            <div class="auth-form">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" name="username" required>
+                        <div id="signup-username-error" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" required>
+                        <div id="signup-password-error" class="error"></div>
+                    </div>
+                    <button type="submit" class="btn" id="signup-btn">Sign Up</button>
+                </form>
+            </div>
+            
+            <div class="auth-form">
+                <h2>Log In</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" name="username" required>
+                        <div id="login-username-error" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required>
+                        <div id="login-password-error" class="error"></div>
+                    </div>
+                    <button type="submit" class="btn" id="login-btn">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer-container"></div>
+    
+    <!-- Component Scripts -->
+    <script src="/components/header.js"></script>
+    <script src="/components/footer.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="/js/auth.js"></script>
+    
+    <script>
+        // Add event listeners for the forms
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signup-form');
+            const loginForm = document.getElementById('login-form');
+            
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const username = document.getElementById('signup-username').value;
+                    const password = document.getElementById('signup-password').value;
+                    
+                    const usernameError = validateUsername(username);
+                    const passwordError = validatePassword(password);
+                    
+                    document.getElementById('signup-username-error').textContent = usernameError;
+                    document.getElementById('signup-password-error').textContent = passwordError;
+                    
+                    if (!usernameError && !passwordError) {
+                        handleSignUp(event);
+                    }
+                });
+            }
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const username = document.getElementById('login-username').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    if (!username || !password) {
+                        document.getElementById('login-username-error').textContent = !username ? 'Username is required' : '';
+                        document.getElementById('login-password-error').textContent = !password ? 'Password is required' : '';
+                        return;
+                    }
+                    
+                    handleLogin(event);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -26,8 +26,8 @@ function validatePassword(password) {
 function handleSignUp(event) {
     event.preventDefault();
     
-    const username = document.getElementById('username')?.value || prompt("Enter a username:");
-    const password = document.getElementById('password')?.value || prompt("Enter a password:");
+    const username = document.getElementById('signup-username')?.value || prompt("Enter a username:");
+    const password = document.getElementById('signup-password')?.value || prompt("Enter a password:");
     
     const usernameError = validateUsername(username);
     const passwordError = validatePassword(password);
@@ -67,8 +67,8 @@ function handleSignUp(event) {
 function handleLogin(event) {
     event.preventDefault();
     
-    const username = document.getElementById('username')?.value || prompt("Enter your username:");
-    const password = document.getElementById('password')?.value || prompt("Enter your password:");
+    const username = document.getElementById('login-username')?.value || prompt("Enter your username:");
+    const password = document.getElementById('login-password')?.value || prompt("Enter your password:");
     
     if (!username || !password) {
         alert("Please enter both username and password.");
