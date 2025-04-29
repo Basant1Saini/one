@@ -1,0 +1,24 @@
+{
+  "name": "socialnet",
+  "version": "1.0.0",
+  "description": "A simple social networking platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "social",
+    "network",
+    "web",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
+
